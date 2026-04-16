@@ -81,7 +81,7 @@
       padding: 18px 52px;
     }
     .nav-logo img {
-      height: clamp(20px, 4vw, 12vw);
+      height: clamp(40px, 4vw, 12vw);
       width: auto;
       filter: brightness(0) invert(1);
       opacity: 0.9;
@@ -356,43 +356,42 @@
     }
 
     /* ── WHY PASTE. ── */
-    #why { background: var(--forest); }
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 96px;
-      align-items: start;
+    #why { background: var(--forest); text-align: center; }
+    .why-intro {
+      max-width: 600px;
+      margin: 0 auto clamp(48px, 6vw, 80px);
     }
-    .why-body p {
-      font-family: var(--body);
-      font-size: 16px;
+    .why-sub {
+      font-family: var(--heading);
+      font-size: clamp(18px, 2vw, 24px);
+      font-style: italic;
       font-weight: 300;
-      color: rgba(234,224,200,0.78);
-      line-height: 1.85;
-      margin-bottom: 28px;
+      color: var(--cream);
+      opacity: 0.6;
+      margin-top: 12px;
     }
-    .why-body em { font-style: italic; color: var(--cream); }
     .stats {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      margin-top: 56px;
-      border: 1px solid rgba(196,146,58,0.15);
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 780px;
+      margin: 0 auto clamp(40px, 6vw, 72px);
+      border: 1px solid rgba(196,146,58,0.18);
     }
     .stat {
-      padding: 28px 24px;
-      border: 1px solid rgba(196,146,58,0.08);
+      padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 36px);
+      border-right: 1px solid rgba(196,146,58,0.18);
     }
+    .stat:last-child { border-right: none; }
     .stat-val {
       font-family: var(--display);
-      font-size: 44px;
+      font-size: clamp(36px, 4vw, 52px);
       font-weight: 700;
       color: var(--gold);
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .stat-val sup {
-      font-size: 20px;
+      font-size: 0.42em;
       vertical-align: super;
     }
     .stat-lbl {
@@ -401,32 +400,40 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: rgba(234,224,200,0.42);
+      line-height: 1.6;
     }
-    .features { display: flex; flex-direction: column; gap: 0; }
-    .feature {
+    .features {
       display: grid;
-      grid-template-columns: 3px 1fr;
-      gap: 20px;
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(196,146,58,0.1);
-      transition: border-color 0.3s;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(196,146,58,0.12);
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: left;
     }
-    .feature:first-child { border-top: 1px solid rgba(196,146,58,0.1); }
-    .feature:hover { border-bottom-color: rgba(196,146,58,0.3); }
-    .feature-bar { background: var(--gold); }
+    .feature {
+      padding: clamp(28px, 4vw, 48px) clamp(24px, 3vw, 40px);
+      border-right: 1px solid rgba(196,146,58,0.12);
+    }
+    .feature:last-child { border-right: none; }
+    .feature-bar {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 20px;
+    }
     .feature h4 {
       font-family: var(--heading);
-      font-size: 19px;
-      font-weight: 500;
-      color: var(--cream);
-      margin-bottom: 6px;
+      font-size: clamp(18px, 1.6vw, 22px);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 10px;
     }
     .feature p {
       font-family: var(--body);
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 300;
       color: rgba(234,224,200,0.55);
-      line-height: 1.65;
+      line-height: 1.75;
     }
 
     /* ── THE PRODUCT ── */
@@ -606,7 +613,8 @@
       .hero-chips { justify-content: center; }
       .hero-flourish { margin-left: auto; margin-right: auto; }
       .hero-title-img { margin-left: auto; margin-right: auto; }
-      .why-grid { grid-template-columns: 1fr; gap: 56px; }
+      .features { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 768px) {
       #nav { padding: 20px 24px; }
@@ -619,12 +627,14 @@
         border-right: 1px solid rgba(196,146,58,0.35);
         border-bottom: none;
       }
-      .stats { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: repeat(3, 1fr); }
+      .features { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 10px; }
     }
     @media (max-width: 480px) {
       .hero-title { font-size: 72px; }
       .stats { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -641,7 +651,7 @@
   <!-- ── HERO ── -->
   <section id="hero">
     <div class="hero-left">
-      <p class="hero-label">Tannkrem — Redesignet</p>
+      <p class="hero-label">Norges første gjenfyllbare tannkrem</p>
 
       <svg class="hero-flourish" viewBox="0 0 400 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <line x1="0" y1="16" x2="60" y2="16" stroke="#C4923A" stroke-width="0.5"/>
@@ -656,13 +666,13 @@
       </svg>
 
       <h1 class="hero-title">PASTE.</h1>
-      <p class="hero-tagline">Bra for deg. Bra for planeten.<br>Bra for lommeboka.</p>
-      <p class="hero-sub">Refillbar tannkrem i aluminium. Dispenseren er din for livet — bytt bare patronen annenhver måned.</p>
+      <p class="hero-tagline">Tannkrem du fyller på. Ikke kaster.</p>
+      <p class="hero-sub">Et komplett system i aluminium — laget for å vare livet ut. Fyll enkelt på med en ny patron annenhver måned.</p>
 
       <div class="hero-chips">
-        <span>Ingen plast</span>
-        <span>Helt naturlig tannkrem</span>
-        <span>Airless-pump system</span>
+        <span>Uten plast</span>
+        <span>Naturlige ingredienser</span>
+        <span>Lufttett pumpesystem</span>
       </div>
 
       <form class="email-form" id="hero-form" onsubmit="handleSubmit(event,'hero-form')" aria-label="Ventelisteskjema">
@@ -675,8 +685,8 @@
     <div class="hero-right">
       <div class="hero-product">
         <img
-          src="logo-and-website-photos/whiteNoLid-removebg-preview.png"
-          alt="PASTE. aluminiumsdispenser i hvit finish"
+          src="logo-and-website-photos/bothFront-removebg-preview.png"
+          alt="PASTE. aluminiumsdispenser og patronkartusj"
         >
       </div>
     </div>
@@ -704,26 +714,26 @@
         <line x1="340" y1="16" x2="400" y2="16" stroke="#C4923A" stroke-width="0.5"/>
       </svg>
 
-      <h2 class="sec-title reveal d2">Tre steg.<br>Resten tar seg selv.</h2>
+      <h2 class="sec-title reveal d2">Enkelt. Elegant. Varig.</h2>
 
       <div class="steps">
         <div class="step reveal d1">
           <div class="step-num">01</div>
           <div class="step-bar"></div>
-          <h3>Kjøp dispenseren én gang</h3>
-          <p>Solid aluminium. Designet for å stå på badet ditt i årevis — aldri kastes. Det er poenget.</p>
+          <h3>Velg dispenseren</h3>
+          <p>En solid pumpe i børstet aluminium. Kjøpes én gang — brukes i årevis.</p>
         </div>
         <div class="step reveal d2">
           <div class="step-num">02</div>
           <div class="step-bar"></div>
-          <h3>Sett inn patronkartusjen</h3>
-          <p>150 ml tannkrem i en 100% biologisk nedbrytbar patron. Vri til den klikker på plass. Pump som normalt.</p>
+          <h3>Meld deg på</h3>
+          <p>Velg abonnement. Du mottar en ny patron annenhver måned — automatisk.</p>
         </div>
         <div class="step reveal d3">
           <div class="step-num">03</div>
           <div class="step-bar"></div>
-          <h3>Bytt patron. Gjenta.</h3>
-          <p>Etter ca. 2 måneder er patronen tom. Kast den — den brytes ned. Dispenseren beholder du. For alltid.</p>
+          <h3>Fyll på. Aldri kast.</h3>
+          <p>Bytt patron på sekunder. Ingen unødvendig emballasje. Ikke noe avfall. Bare PASTE.</p>
         </div>
       </div>
     </div>
@@ -732,153 +742,7 @@
   <!-- ── WHY PASTE. ── -->
   <section id="why">
     <div class="inner">
-      <div class="why-grid">
-
-        <div class="why-body">
-          <span class="sec-label reveal">Hvorfor PASTE.</span>
-
-          <svg class="flourish flourish-left reveal d1" viewBox="0 0 400 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <line x1="0" y1="16" x2="60" y2="16" stroke="#C4923A" stroke-width="0.5"/>
-            <path d="M60,16 Q80,4 100,16 Q80,28 60,16" fill="none" stroke="#C4923A" stroke-width="1"/>
-            <path d="M100,16 Q120,4 140,16 Q120,28 100,16" fill="none" stroke="#C4923A" stroke-width="1"/>
-            <line x1="140" y1="16" x2="188" y2="16" stroke="#C4923A" stroke-width="0.5"/>
-            <path d="M200,4 L212,16 L200,28 L188,16 Z" fill="#C4923A"/>
-            <line x1="212" y1="16" x2="260" y2="16" stroke="#C4923A" stroke-width="0.5"/>
-            <path d="M260,16 Q280,4 300,16 Q280,28 260,16" fill="none" stroke="#C4923A" stroke-width="1"/>
-            <path d="M300,16 Q320,4 340,16 Q320,28 300,16" fill="none" stroke="#C4923A" stroke-width="1"/>
-            <line x1="340" y1="16" x2="400" y2="16" stroke="#C4923A" stroke-width="0.5"/>
-          </svg>
-
-          <h2 class="sec-title reveal d2" style="color: var(--cream); margin-bottom: 36px;">
-            Ingen kompromisser.<br>Hverken for deg<br>eller planeten.
-          </h2>
-
-          <p class="reveal d2">
-            Hvert år kastes milliarder av plastrør med tannkrem — umulig å resirkulere,
-            og de brytes aldri ned. Vi startet med ett spørsmål: hva om dispenseren
-            aldri ble kastet?
-          </p>
-          <p class="reveal d3">
-            PASTE. bruker <em>airless-teknologi</em> som sørger for at 100% av produktet
-            brukes opp — ingenting settes igjen i røret. Naturlige ingredienser,
-            klinisk effektivt fluorid, og automatisk levering annenhver måned.
-          </p>
-
-          <div class="stats reveal d4">
-            <div class="stat">
-              <div class="stat-val">150<sup>ml</sup></div>
-              <div class="stat-lbl">Per patron</div>
-            </div>
-            <div class="stat">
-              <div class="stat-val">0</div>
-              <div class="stat-lbl">Gram plast</div>
-            </div>
-            <div class="stat">
-              <div class="stat-val">100%</div>
-              <div class="stat-lbl">Biologisk nedbrytbar</div>
-            </div>
-            <div class="stat">
-              <div class="stat-val">&#8734;</div>
-              <div class="stat-lbl">Refills, én dispenser</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="features reveal">
-          <div class="feature">
-            <div class="feature-bar"></div>
-            <div>
-              <h4>Airless-teknologi</h4>
-              <p>Følgestempelet presser produktet fullstendig ut. Ingenting sløses — 100% av tannkremen brukes opp.</p>
-            </div>
-          </div>
-          <div class="feature">
-            <div class="feature-bar"></div>
-            <div>
-              <h4>Naturlige ingredienser</h4>
-              <p>Uten SLS, parabener og mikroplast. Fluorid 1000–1450 ppm — klinisk effektivt.</p>
-            </div>
-          </div>
-          <div class="feature">
-            <div class="feature-bar"></div>
-            <div>
-              <h4>Én pumpe = riktig dose</h4>
-              <p>Designet for presis dosering. Aldri for mye, aldri for lite. Alltid optimalt fra første dag.</p>
-            </div>
-          </div>
-          <div class="feature">
-            <div class="feature-bar"></div>
-            <div>
-              <h4>Abonnement, ingen tanker</h4>
-              <p>Ny patron ankommer automatisk annenhver måned. Glem aldri tannkrem igjen.</p>
-            </div>
-          </div>
-          <div class="feature">
-            <div class="feature-bar"></div>
-            <div>
-              <h4>Aluminium for livet</h4>
-              <p>Solid, korrosjonsbestandig, tidløs. Et baderomsobjekt du faktisk vil vise frem.</p>
-            </div>
-          </div>
-          <div class="feature">
-            <div class="feature-bar"></div>
-            <div>
-              <h4>På sikt billigere</h4>
-              <p>Refillkartusjen koster langt mindre per bruk enn vanlig tannkrem. Godt for lommeboka.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── THE PRODUCT ── -->
-  <section id="product">
-    <div class="inner">
-      <span class="sec-label reveal">Produktet</span>
-      <h2 class="sec-title reveal d1" style="color: var(--forest);">
-        Laget for å vare.<br>Designet for å vises.
-      </h2>
-
-      <div class="product-grid">
-        <div class="product-img reveal">
-          <img
-            src="logo-and-website-photos/bothFront-removebg-preview.png"
-            alt="PASTE. aluminiumsdispenser og patronkartusj"
-          >
-        </div>
-
-        <div class="details">
-          <div class="detail reveal d1">
-            <span class="detail-lbl">Material</span>
-            <h3>Børstet aluminium</h3>
-            <p>Aluminiumsdispenseren er solid, korrosjonsbestandig og aldri kastes. Ment for badet ditt i årevis.</p>
-          </div>
-          <div class="detail reveal d2">
-            <span class="detail-lbl">Kapasitet</span>
-            <h3>170–180 ml kammerhus, 150 ml patron</h3>
-            <p>Patronen passer presist. Airless-stempelet sikrer at du får ut det aller siste gram.</p>
-          </div>
-          <div class="detail reveal d3">
-            <span class="detail-lbl">Refill</span>
-            <h3>Biologisk nedbrytbar patronkartusj</h3>
-            <p>Laget av naturmaterialer. Ingen plast, ingen mikroplast. Brukt, kompostert — det er alt.</p>
-          </div>
-          <div class="detail reveal d4">
-            <span class="detail-lbl">Skandinavisk design</span>
-            <h3>Preget PASTE.-logo. Gullring.</h3>
-            <p>Kremhvit finish, gullaksentuering, preget merkevarering. Et objekt du vil ha synlig.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── WAITLIST ── -->
-  <section id="waitlist">
-    <div class="inner">
-      <span class="sec-label reveal" style="display:block; text-align:center;">Ventelisten</span>
+      <span class="sec-label reveal">Hvorfor PASTE.</span>
 
       <svg class="flourish reveal d1" viewBox="0 0 400 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <line x1="0" y1="16" x2="60" y2="16" stroke="#C4923A" stroke-width="0.5"/>
@@ -892,10 +756,101 @@
         <line x1="340" y1="16" x2="400" y2="16" stroke="#C4923A" stroke-width="0.5"/>
       </svg>
 
-      <h2 class="waitlist-title reveal d2">Vær med fra start.</h2>
+      <div class="why-intro reveal d2">
+        <h2 class="sec-title" style="color: var(--cream); margin-bottom: 0;">
+          Tannkrem har vært den samme i over 70 år.
+        </h2>
+        <p class="why-sub">Det er på tide med en endring.</p>
+      </div>
+
+      <div class="stats reveal d3">
+        <div class="stat">
+          <div class="stat-val">8<sup>mrd</sup></div>
+          <div class="stat-lbl">plastrør kastes hvert år globalt</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">150<sup>ml</sup></div>
+          <div class="stat-lbl">varer i ca. to måneder</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">0</div>
+          <div class="stat-lbl">plast i systemet</div>
+        </div>
+      </div>
+
+      <div class="features reveal d4">
+        <div class="feature">
+          <div class="feature-bar"></div>
+          <h4>Naturlige ingredienser</h4>
+          <p>Formulert uten unødvendige tilsetninger. Innholdet er like viktig som uttrykket.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-bar"></div>
+          <h4>Lufttett pumpe</h4>
+          <p>Holder kremen fri for luft og bakterier — og gir riktig mengde hver gang.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-bar"></div>
+          <h4>Abonnement</h4>
+          <p>Sett det opp én gang. Patronene leveres automatisk — du slipper å tenke på tannkrem igjen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── THE PRODUCT ── -->
+  <section id="product">
+    <div class="inner">
+      <span class="sec-label reveal">Produktet</span>
+      <h2 class="sec-title reveal d1" style="color: var(--forest);">
+        To deler. Ett system.
+      </h2>
+
+      <div class="product-grid">
+        <div class="product-img reveal">
+          <img
+            src="logo-and-website-photos/whiteNoLid-removebg-preview.png"
+            alt="PASTE. aluminiumsdispenser i hvit finish"
+          >
+        </div>
+
+        <div class="details">
+          <div class="detail reveal d1">
+            <span class="detail-lbl">Dispenseren</span>
+            <h3>Børstet aluminium</h3>
+            <p>En pumpe laget for å vare. Solid, tidløs og skapt for badet ditt — ikke for søppeldunken.</p>
+          </div>
+          <div class="detail reveal d2">
+            <span class="detail-lbl">Patronen</span>
+            <h3>Biologisk nedbrytbar</h3>
+            <p>150 ml naturlig tannkrem i en kompakt, lufttett patron. Byttes på sekunder — brytes ned etter bruk.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WAITLIST ── -->
+  <section id="waitlist">
+    <div class="inner">
+      <span class="sec-label reveal" style="display:block; text-align:center;">Venteliste</span>
+
+      <svg class="flourish reveal d1" viewBox="0 0 400 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="0" y1="16" x2="60" y2="16" stroke="#C4923A" stroke-width="0.5"/>
+        <path d="M60,16 Q80,4 100,16 Q80,28 60,16" fill="none" stroke="#C4923A" stroke-width="1"/>
+        <path d="M100,16 Q120,4 140,16 Q120,28 100,16" fill="none" stroke="#C4923A" stroke-width="1"/>
+        <line x1="140" y1="16" x2="188" y2="16" stroke="#C4923A" stroke-width="0.5"/>
+        <path d="M200,4 L212,16 L200,28 L188,16 Z" fill="#C4923A"/>
+        <line x1="212" y1="16" x2="260" y2="16" stroke="#C4923A" stroke-width="0.5"/>
+        <path d="M260,16 Q280,4 300,16 Q280,28 260,16" fill="none" stroke="#C4923A" stroke-width="1"/>
+        <path d="M300,16 Q320,4 340,16 Q320,28 300,16" fill="none" stroke="#C4923A" stroke-width="1"/>
+        <line x1="340" y1="16" x2="400" y2="16" stroke="#C4923A" stroke-width="0.5"/>
+      </svg>
+
+      <h2 class="waitlist-title reveal d2">Bli med fra starten.</h2>
       <p class="waitlist-sub reveal d3">
-        Vi inviterer 50 personer til gratis testing av PASTE. — og bruker tilbakemeldingene til
-        å bygge noe virkelig unikt. Vil du være en av dem?
+        Vi inviterer 50 personer til å teste PASTE. kostnadsfritt, og bruker tilbakemeldingene
+        til å videreutvikle produktet. Vil du være en av dem?
       </p>
 
       <form class="email-form" id="waitlist-form" onsubmit="handleSubmit(event,'waitlist-form')" style="justify-content:center;" aria-label="Ventelisteskjema">
@@ -919,7 +874,7 @@
 
     <div class="footer-bottom">
       <span class="footer-origin">Designet i Norge</span>
-      <span class="footer-copy">&copy; 2026 PASTE. &mdash; pasteco.no</span>
+      <span class="footer-copy">&copy; 2026 PASTE. Alle rettigheter forbeholdt.</span>
     </div>
   </footer>
 

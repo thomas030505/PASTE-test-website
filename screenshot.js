@@ -26,6 +26,9 @@ for (const vp of VIEWPORTS) {
   const page = await browser.newPage();
   await page.setViewport({ width: vp.width, height: vp.height });
   await page.goto(URL, { waitUntil: 'networkidle0' });
+  await page.evaluate(() => {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  });
   await new Promise(r => setTimeout(r, 600));
 
   // Full page
